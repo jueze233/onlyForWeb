@@ -27,16 +27,21 @@ import{state as e}from"./constants.js";import{ui as t}from"./uiUtils.js";import{
                 <div class="costume-available-list">
                     <div class="costume-list-header">
                         <label>可用服装列表：</label>
-                        <button class="btn btn-sm btn-secondary" onclick="costumeManager.addNewCostume('${i}', '${o}')">
-                            ➕ 添加服装
-                        </button>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn btn-sm btn-secondary" onclick="costumeManager.addNewCostume('${i}', '${o}')">
+                                ➕ 添加服装
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="costumeManager.openLive2DDatabase()" title="在新标签页查看 Bestdori Live2D 数据库">
+                                🔍 浏览数据库
+                            </button>
+                        </div>
                     </div>
                     <div id="costume-list-${o}" class="costume-list-items">
                         ${this.renderCostumeListItems(i,r,o)}
                     </div>
                 </div>
             </div>
-            `,t.appendChild(n);let c=n.querySelector(".costume-select");c.addEventListener("change",e=>{let t=e.target.dataset.characterKey;this.tempCostumeChanges[t]=e.target.value})})},renderCostumeListItems:(e,t,s)=>t&&0!==t.length?t.map((t,a)=>`
+            `,t.appendChild(n);let c=n.querySelector(".costume-select");c.addEventListener("change",e=>{let t=e.target.dataset.characterKey;this.tempCostumeChanges[t]=e.target.value})})},openLive2DDatabase(){window.open("https://bestdori.com/tool/explorer/asset/jp/live2d/chara","_blank")},renderCostumeListItems:(e,t,s)=>t&&0!==t.length?t.map((t,a)=>`
             <div class="costume-list-item">
                 <span>${t}</span>
                 <div class="costume-item-actions">
